@@ -9,6 +9,8 @@ dependencies = [
     "beautifulsoup4>=4.12",
     "duckdb>=1.0",
     "lxml>=5.0",
+    "matplotlib>=3.10.9",
     "pandas>=2.0",
     "requests>=2.31",
+    "seaborn>=0.13.2",
 ]
