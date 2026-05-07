@@ -86,13 +86,13 @@ def build_manifest():
     manifest["ic"] = [(y, f"IC{y}") for y in range(2024, 1999, -1)]
     
     # IC_AY: Academic year prices
-    manifest["ic_ay"] = [(y, f"IC{y}_AY") for y in range(2023, 1999, -1)]
+    manifest["ic_ay"] = [(y, f"IC{y}_AY") for y in range(2024, 1999, -1)]
     
     # IC_PY: Program year prices
-    manifest["ic_py"] = [(y, f"IC{y}_PY") for y in range(2023, 1999, -1)]
+    manifest["ic_py"] = [(y, f"IC{y}_PY") for y in range(2024, 1999, -1)]
     
     # ADM: Admissions
-    manifest["adm"] = [(y, f"ADM{y}") for y in range(2023, 2013, -1)]
+    manifest["adm"] = [(y, f"ADM{y}") for y in range(2024, 2013, -1)]
     
     # EFIA: 12-month instructional activity
     manifest["efia"] = [(y, f"EFIA{y}") for y in range(2024, 2001, -1)]
@@ -101,22 +101,23 @@ def build_manifest():
     manifest["effy"] = [(y, f"EFFY{y}") for y in range(2024, 2001, -1)]
     
     # EFA: Fall enrollment by race/ethnicity (A component)
-    manifest["ef_a"] = [(y, f"EF{y}A") for y in range(2023, 1999, -1)]
+    manifest["ef_a"] = [(y, f"EF{y}A") for y in range(2024, 1999, -1)]
     
     # EFB: Fall enrollment by age
-    manifest["ef_b"] = [(y, f"EF{y}B") for y in range(2023, 1999, -1)]
+    manifest["ef_b"] = [(y, f"EF{y}B") for y in range(2024, 1999, -1)]
     
     # EFC: Residence and migration
-    manifest["ef_c"] = [(y, f"EF{y}C") for y in range(2023, 1999, -1)]
+    manifest["ef_c"] = [(y, f"EF{y}C") for y in range(2024, 1999, -1)]
     
     # EFD: Retention rates
-    manifest["ef_d"] = [(y, f"EF{y}D") for y in range(2023, 1999, -1)]
+    manifest["ef_d"] = [(y, f"EF{y}D") for y in range(2024, 1999, -1)]
     
     # C_A: Completions awards
     manifest["c_a"] = [(y, f"C{y}_A") for y in range(2024, 1999, -1)]
     
     # SFA: Student financial aid (uses academic year naming)
     sfa_files = []
+    sfa_files.append((2024, "SFA2425")) 
     sfa_files.append((2023, "SFA2223"))
     sfa_files.append((2022, "SFA2122"))
     sfa_files.append((2021, "SFA2021"))
@@ -142,19 +143,19 @@ def build_manifest():
     manifest["sfa"] = sfa_files
     
     # GR: Graduation rates 150%
-    manifest["gr"] = [(y, f"GR{y}") for y in range(2023, 1996, -1)]
+    manifest["gr"] = [(y, f"GR{y}") for y in range(2024, 1996, -1)]
     
     # GR200: Graduation rates 200% (uses 2-digit year in filename)
     manifest["gr200"] = [(2000 + y, f"GR200_{y:02d}") for y in range(23, 7, -1)]
     
     # OM: Outcome measures
-    manifest["om"] = [(y, f"OM{y}") for y in range(2023, 2014, -1)]
+    manifest["om"] = [(y, f"OM{y}") for y in range(2024, 2014, -1)]
     
     # EAP: Employees by assigned position
-    manifest["eap"] = [(y, f"EAP{y}") for y in range(2023, 2000, -1)]
+    manifest["eap"] = [(y, f"EAP{y}") for y in range(2024, 2000, -1)]
     
     # SAL_IS: Salaries - instructional staff
-    manifest["sal_is"] = [(y, f"SAL{y}_IS") for y in range(2023, 2011, -1)]
+    manifest["sal_is"] = [(y, f"SAL{y}_IS") for y in range(2024, 2011, -1)]
     
     # SAL: Salaries (older format, pre-2012) - these files use different naming;
     # the SAL{year}_IS format only starts in 2012, and pre-2012 data uses
@@ -162,23 +163,23 @@ def build_manifest():
     # manifest["sal"] = [(y, f"SAL{y}") for y in range(2011, 2000, -1)]
     
     # AL: Academic libraries
-    manifest["al"] = [(y, f"AL{y}") for y in range(2023, 2013, -1)]
+    manifest["al"] = [(y, f"AL{y}") for y in range(2024, 2013, -1)]
     
     # FLAGS: Response status
     manifest["flags"] = [(y, f"FLAGS{y}") for y in range(2024, 2003, -1)]
     
     # Finance: F1A (GASB/public), F2 (FASB/private nonprofit), F3 (for-profit)
-    # Uses academic year naming like SFA (e.g., F2223_F1A for fiscal year ending 2023)
+    # Uses academic year naming like SFA (e.g., F2223_F1A for fiscal year ending 2024)
     def _fin_files(suffix, start_yr=2001):
         files = []
-        for end_yr in range(2023, start_yr, -1):
+        for end_yr in range(2024, start_yr, -1):
             yr_code = f"{(end_yr-1) % 100:02d}{end_yr % 100:02d}"
             files.append((end_yr, f"F{yr_code}_{suffix}"))
         return files
     
-    manifest["f1a"] = _fin_files("F1A", start_yr=2001)  # 2002–2023
-    manifest["f2"]  = _fin_files("F2", start_yr=2000)    # 2001–2023
-    manifest["f3"]  = _fin_files("F3", start_yr=2000)    # 2001–2023
+    manifest["f1a"] = _fin_files("F1A", start_yr=2001)  # 2002–2024
+    manifest["f2"]  = _fin_files("F2", start_yr=2000)    # 2001–2024
+    manifest["f3"]  = _fin_files("F3", start_yr=2000)    # 2001–2024
     
     return manifest
 
